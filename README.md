@@ -9,11 +9,15 @@ This is a repo to complete the original work presented in
 best performing models as the one proposed in the orginal paper [the orginal paper](https://arxiv.org/pdf/2208.13241.pdf) uses huge ammount of data comming from various data, to guarentee generalization capablities and to make the training possible, the model need to be trained with normalized raw data (relative depths).
 
 This obstacle makes 3D reconstruction through projective geometry incorrect, even if the camera parameters are provided. This is due to the fact that the model provides depth values that are invariant to scale and shift. On the other hand, 3D reconstruction through the inverse camera projection matrix can be done even if the scale is unknown, since x and y will get the same scale as z (the depth). It is possible to estimate x and y using the following equations:
-
+'''
 $$ x = {u  \over f}d $$ 
+'''
+'''
 $$ y = {v  \over f}d $$ 
+'''
+'''
 $$ z = d $$ 
-
+'''
 such as $u$ and $v$ are the coordinates in pixels, $f$ is the focal lenght and $d$ is the depth value. 
 
 This linear relationship enforces the fact that $x$ and $y$ will be scaled according to the depth scale. This means that the final reconstruction, even if the scale of the depth values isn't in real meters, will manage to preserve the geometrical attributes of the scene. However, a shift in the depth values isn't tolerated, and a correctly scaled shift value is needed to recover the 3D scene. This is because the depth values are physical quantities, and altering this information will also require another set of image coordinates, other than the ones present in the RGB image at our disposal. In other words, to maintain the matching possibility between real coordinates and image coordinates, the correct shift value must be determined. We also assume that camera intrinsics aren't provided since we want the solution to be as general as possible and work with any given RGB image.
