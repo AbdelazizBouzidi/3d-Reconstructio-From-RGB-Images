@@ -6,7 +6,7 @@ This is a repo to complete the original work presented in
 ## What does it do
 3D reconstruction from a single image is a very challenging task. State-of-the-art techniques are capable of providing accurate approximations of depth values at each pixel, which give an information about one of the required 3 dimensions.
 
-best performing models as the one proposed in the orginal paper [the orginal paper](https://arxiv.org/pdf/2208.13241.pdf) uses huge ammount of data comming from various data, to guarentee generalization capablities and to make the training possible, the model need to be trained with normalized raw data (relative depths).
+best performing models as the one proposed in the orginal paper [the orginal paper](https://arxiv.org/pdf/2208.13241.pdf) uses huge ammount of data comming from various datasets, to guarentee generalization capablities and to make the training possible, the model need to be trained with normalized raw data (relative depths).
 
 This obstacle makes 3D reconstruction through projective geometry incorrect, even if the camera parameters are provided. This is due to the fact that the model provides depth values that are invariant to scale and shift. On the other hand, 3D reconstruction through the inverse camera projection matrix can be done even if the scale is unknown, since x and y will get the same scale as z (the depth). It is possible to estimate x and y using the following equations:
 
